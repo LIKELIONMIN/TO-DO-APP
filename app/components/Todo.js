@@ -5,18 +5,20 @@ import {AntDesign} from "@expo/vector-icons"
 
 const {width,height} = Dimensions.get('window');
 
-const TodoItem = ({text,isComplete}) =>(
+const TodoItem = ({text,isComplete,changeComplete,deleteItem}) =>(
     <View style={styles.todoContainer}>
         <View>
             <View style={styles.objContainer}>
                 <View style={styles.textContainer}>
-                    <TouchableOpacity>
-                         <AntDesign name={isComplete?"checksquare":"checksquareo"} size={30} style={styles.check}/>
+                    <TouchableOpacity
+                        onPress = {changeComplete}>
+                        <AntDesign name={isComplete?"checksquare":"checksquareo"} size={30} style={styles.check}/>
                      </TouchableOpacity>
                 <Text style ={styles.todos}>{text}</Text>
                 </View>
-                    <TouchableOpacity>
-                        <FontAwesome name="close" size={20}/>
+                    <TouchableOpacity
+                        onPress={deleteItem}>
+                        <AntDesign name="close" size={20}/>
                     </TouchableOpacity>
             </View>
         </View>
